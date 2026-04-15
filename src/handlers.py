@@ -5,8 +5,8 @@ from .utils import (
     is_supported_url,
     delete_file_async,
     logger,
-    Config,
 )
+from .config import Config
 import os
 
 downloader = VideoDownloader()
