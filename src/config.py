@@ -8,7 +8,7 @@ class Config:
     
     # Deployment settings
     RENDER_DEPLOYMENT = os.getenv("RENDER_DEPLOYMENT", "false").lower() == "true"
-    PORT = os.getenv("PORT", "8000")  # Render sets this automatically
+    PORT = int(os.getenv("PORT", 8000)) # Render sets this automatically
     
     # Download settings
     DOWNLOAD_PATH = os.getenv("DOWNLOAD_PATH", "downloads")
