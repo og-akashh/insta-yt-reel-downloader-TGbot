@@ -1,0 +1,23 @@
+services:
+  - type: worker
+    name: telegram-media-bot
+    runtime: python
+    repo: https://github.com/YOUR_USERNAME/telegram-media-bot  # Change this
+    plan: free
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: DELETE_AFTER_MINUTES
+        value: 20
+      - key: MAX_FILE_SIZE_MB
+        value: 50
+      - key: LOG_LEVEL
+        value: INFO
+      - key: RENDER_DEPLOYMENT
+        value: true
+    buildCommand: |
+      apt-get update && apt-get install -y ffmpeg
+      pip install -r requirements.txt
+    startCommand: python -m src.bot
+    autoDeploy: true
+    healthCheckPath: /health
