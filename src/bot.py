@@ -1,3 +1,4 @@
+import os
 import asyncio
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -10,6 +11,17 @@ from telegram.ext import (
 from .config import Config
 from .handlers import start, handle_message, error_handler
 from .utils import setup_logging, logger
+
+
+# ... your other imports ...
+
+def run_health_server():
+    """Run a simple HTTP server for health checks (required by Render)"""
+    # Read the port from the environment variable and ensure it's an integer
+    port = int(os.environ.get("PORT", 8000))
+    server = HTTPServer(('0.0.0.0', port), HealthHandler)
+    logger.info(f"Health check server running on port {port}")
+    server.serve_forever()
 
 class HealthHandler(BaseHTTPRequestHandler):
     def do_GET(self):
