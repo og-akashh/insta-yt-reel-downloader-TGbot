@@ -10,3 +10,6 @@ services:
       - ./downloads:/app/downloads
     environment:
       - TZ=UTC
+      - RENDER_DEPLOYMENT=false
+    ports:
+      - "8000:8000"  # For health check
