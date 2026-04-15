@@ -1,48 +1,38 @@
-# 🎥 insta-yt-reel-downloader-TGbot
+# 🎥 Telegram Media Downloader Bot
 
-A production-ready Telegram bot that downloads Instagram Reels and YouTube Shorts, then automatically deletes them after 20 minutes.
+A production-ready Telegram bot that downloads Instagram Reels and YouTube Shorts, then automatically deletes them after 20 minutes. Optimized for **Render.com** free tier deployment.
 
-## Features
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+## ✨ Features
 
 - ✅ Download Instagram Reels and YouTube Shorts
 - ⏰ Auto-delete local files after 20 minutes
 - 🗑️ Auto-delete sent messages from chat
-- 🐳 Docker support for easy deployment
+- 🐳 Docker support for local development
 - ⚡ Asynchronous & concurrent request handling
-- 📊 Rate limiting and error handling
+- 🚀 **One-click deploy to Render** (free tier)
+- 📊 Automatic health checks and restart
 
-## Quick Start
+## 🚀 Deploy to Render (Recommended)
 
-1. **Get a Telegram Bot Token** from [@BotFather](https://t.me/botfather)
-2. **Clone this repository**
-3. **Copy `.env.example` to `.env`** and add your token
-4. **Run** `./start.sh` (or `docker-compose up --build`)
+### Option 1: One-Click Deploy (Easiest)
 
-## Deployment
+1. Click the "Deploy to Render" button above
+2. Connect your GitHub repository
+3. Add your `BOT_TOKEN` in environment variables
+4. Click "Apply"
+5. Your bot will be live in 2-3 minutes!
 
-### Railway (Free)
-- Add `BOT_TOKEN` as environment variable
-- Deploy from GitHub repository
+### Option 2: Manual Deploy
 
-### Heroku (Free Tier)
-- Add `BOT_TOKEN` config var
-- Deploy with `git push heroku main`
+1. **Fork this repository** to your GitHub account
 
-### VPS / Self-hosted
-- Install Docker and Docker Compose
-- Run `docker-compose up -d`
-
-## Configuration
-
-Edit `.env` to adjust:
-
-| Variable               | Description                        |
-| ---------------------- | ---------------------------------- |
-| `BOT_TOKEN`            | Telegram bot token (required)     |
-| `DELETE_AFTER_MINUTES` | Minutes until deletion (default 20)|
-| `MAX_FILE_SIZE_MB`     | Max video size to send (default 50)|
-| `LOG_LEVEL`            | `DEBUG`, `INFO`, `WARNING`, `ERROR`|
-
-## License
-
-MIT
+2. **Create a new Web Service** on [Render](https://render.com)
+   - Connect your GitHub repo
+   - Name: `telegram-media-bot`
+   - Environment: `Python 3`
+   - Build Command:
+     ```bash
+     apt-get update && apt-get install -y ffmpeg
+     pip install -r requirements.txt
